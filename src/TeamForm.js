@@ -1,22 +1,6 @@
 import React from 'react';
 
 const TeamForm = props => {
-    const defaultState = {name: '', role: '', email: ''};
-    cosnt [newMember, setNewMember] = React.useState(defaultState);
-
-    const handleChange = event => {
-        console.log(event.target.value);
-        setNewMember({
-            ...newMember,
-            [event.target.name]: event.target.value
-        });
-    };
-
-    const handleSubmit = event => {
-        event.perventDefault();
-        setNewMember(defaultState);
-        props.setNewMember([...props.Teamlist, newMember]);
-    };
 
     const [name, setName] = React.useState('');
     const [role, setRole] = React.useState('');
@@ -24,12 +8,12 @@ const TeamForm = props => {
 
     const handleName = event => setName(event.target.value);
     const handleRole = event => setRole(event.target.value);
-    const handleEmail = event => setEmail(event.taget.value);
+    const handleEmail = event => setEmail(event.target.value);
 
     const handleSubmit = event => {
         event.perventDefault();
         if (name && role && email) {
-            props.setNewMember([...props.newMember {name, role, email}]);
+            props.setMembers([...props.members, {name, role, email}]);
             resetState();
         }
     };
@@ -59,9 +43,10 @@ const TeamForm = props => {
             onChange={handleEmail}
             type='text'
             name='name'
-            value={value}
+            value={email}
             placeholder='email'
             />
+            <button type='submit'>Add Member</button>
         </form>
     );
 };
